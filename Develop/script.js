@@ -55,8 +55,19 @@ Your password must be between 8 characters and 128 characters`));
   }
 
   if (lowerCase == 'yes') {
-    possibleChars = possibleChars + '' //<lowercase alphabet... after all . console log 
+    possibleChars = possibleChars + 'abcdefghijklmnopqrstuvwxwz' //<lowercase alphabet... after all . console log 
+  }
 
+  if (upperCase == 'yes') {
+    possibleChars = possibleChars + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  }
+
+  if (numeric == 'yes') {
+    possibleChars = possibleChars + '1234567890'
+  }
+
+  if (special == 'yes') {
+    possibleChars = possibleChars + `!"#$%&'()*+,-./:;<=>?@[]/^_{}|~`
   }
 }
 
