@@ -2,7 +2,6 @@
 function generatePassword() {
   /*ask the user for the the desired length and verify that the answer is valid*/
   var possibleChars = '';
-
   var length = Number(prompt(`How long do you want your password to be?
 Your password must be between 8 characters and 128 characters`));
 
@@ -55,33 +54,50 @@ Your password must be between 8 characters and 128 characters`));
   }
 
   if (lowerCase == 'yes') {
-    possibleChars = possibleChars + 'abcdefghijklmnopqrstuvwxwz' //<lowercase alphabet... after all . console log 
+    possibleChars = possibleChars + 'abcdefghijklmnopqrstuvwxwz'
+    //possibleChar += 'abcdefghijklmnopqrstuvwxwz' <same same
+    //<lowercase alphabet... after all . console log 
   }
+  console.log('possibleChars', possibleChars)
 
   if (upperCase == 'yes') {
     possibleChars = possibleChars + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   }
+  console.log('possibleChars', possibleChars)
 
   if (numeric == 'yes') {
     possibleChars = possibleChars + '1234567890'
   }
+  console.log('possibleChars', possibleChars)
 
   if (special == 'yes') {
-    possibleChars = possibleChars + `!"#$%&'()*+,-./:;<=>?@[]/^_{}|~`
+    possibleChars = possibleChars + `!"#$%&'()*+,-./:;<=>?@[]/^_{}|~\``
   }
+  console.log('possibleChars', possibleChars)
+
+  let passwordResults = '';
+
+  for (let i = 0; i < length; i++) {
+    //generate a random number through math.floor(math.random * length?)
+    let randomIndex = generateRandom(possibleChars.length);  
+    let randomChar = possibleChars[randomIndex];
+    passwordResults = passwordResults + randomChar; 
+    //passwordResults += randomChar
+    // console.log('password results', passwordResults)
+  }
+  return passwordResults;
 }
 
+function generateRandom (maxLimit) {
+  return Math.floor(Math.random() * maxLimit)
+}
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-
 // Write password to the #password input
-
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
